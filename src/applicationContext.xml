@@ -5,4 +5,13 @@
 
     <!-- ioc configuration-->
     <bean id="user" class = "com.example.ioc.User" />
+
+    <!-- 静态工厂配置-->
+    <bean id="bean" class = "com.example.bean.BeanFactory" factory-method="getBean" />
+
+    <!-- 实例工厂配置-->
+    <!-- 创建工厂对象-->
+    <bean id="beanNonStaticFactory" class = "com.example.bean.BeanNonStaticFactory" />
+    <!-- 找到方法-->
+    <bean id="beanNonStatic" factory-bean="beanNonStaticFactory" factory-method="getBeanNonStatic"/>
 </beans>
