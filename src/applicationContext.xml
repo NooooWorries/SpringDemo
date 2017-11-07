@@ -16,8 +16,25 @@
     <bean id="beanNonStatic" factory-bean="beanNonStaticFactory" factory-method="getBeanNonStatic"/>
 
     <!-- 有参数构造注入-->
-    <bean id="propertyDemoOne" class ="com.example.property.PropertyDemo1">
+    <bean id="propertyDemoOne" class ="com.example.propertyConstructor.PropertyDemo1">
         <!-- 注入参数-->
         <constructor-arg name="username" value="success"></constructor-arg>
     </bean>
+
+    <!-- Set方法注入-->
+    <bean id = "propertyDemoSet" class="com.example.propertySet.Book" >
+        <property name="title" value="MySQL从删库到跑路"></property>
+        <property name="price" value="30"></property>
+    </bean>
+
+    <!-- Set 注入 对象类型的属性-->
+    <!--1.配置Service和DAO对象-->
+    <bean id = "userDAO" class = "com.example.ioc.UserDAO"> </bean>
+    <bean id = "userService" class = "com.example.ioc.UserService">
+        <!--2.Service里面注入DAO对象
+              这不是String，是对象 不能用value，用ref
+              ref的值为DAO对象的id： userDAO-->
+        <property name="userDAO" ref="userDAO"></property>
+    </bean>
+    
 </beans>

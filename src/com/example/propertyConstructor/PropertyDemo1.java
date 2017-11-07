@@ -1,4 +1,4 @@
-package com.example.property;
+package com.example.propertyConstructor;
 
 public class PropertyDemo1 {
     private String username;

@@ -1,4 +1,4 @@
-package com.example.property;
+package com.example.propertyConstructor;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
