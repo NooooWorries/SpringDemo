@@ -14,4 +14,10 @@
     <bean id="beanNonStaticFactory" class = "com.example.bean.BeanNonStaticFactory" />
     <!-- 找到方法-->
     <bean id="beanNonStatic" factory-bean="beanNonStaticFactory" factory-method="getBeanNonStatic"/>
+
+    <!-- 有参数构造注入-->
+    <bean id="propertyDemoOne" class ="com.example.property.PropertyDemo1">
+        <!-- 注入参数-->
+        <constructor-arg name="username" value="success"></constructor-arg>
+    </bean>
 </beans>
