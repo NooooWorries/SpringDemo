@@ -2,35 +2,34 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
     <!-- ioc configuration-->
-    <bean id="user" class = "com.example.ioc.User" />
+    <bean id="user" class = "com.ch01.ioc.User" />
 
     <!-- 静态工厂配置-->
-    <bean id="bean" class = "com.example.bean.BeanFactory" factory-method="getBean" />
+    <bean id="bean" class = "com.ch01.bean.BeanFactory" factory-method="getBean" />
 
     <!-- 实例工厂配置-->
     <!-- 创建工厂对象-->
-    <bean id="beanNonStaticFactory" class = "com.example.bean.BeanNonStaticFactory" />
+    <bean id="beanNonStaticFactory" class = "com.ch01.bean.BeanNonStaticFactory" />
     <!-- 找到方法-->
     <bean id="beanNonStatic" factory-bean="beanNonStaticFactory" factory-method="getBeanNonStatic"/>
 
     <!-- 有参数构造注入-->
-    <bean id="propertyDemoOne" class ="com.example.propertyConstructor.PropertyDemo1">
+    <bean id="propertyDemoOne" class ="com.ch01.propertyConstructor.PropertyDemo1">
         <!-- 注入参数-->
         <constructor-arg name="username" value="success"></constructor-arg>
     </bean>
 
     <!-- Set方法注入-->
-    <bean id = "propertyDemoSet" class="com.example.propertySet.Book" >
+    <bean id = "propertyDemoSet" class="com.ch01.propertySet.Book" >
         <property name="title" value="MySQL从删库到跑路"></property>
         <property name="price" value="30"></property>
     </bean>
 
     <!-- Set 注入 对象类型的属性-->
     <!--1.配置Service和DAO对象-->
-    <bean id = "userDAO" class = "com.example.ioc.UserDAO"> </bean>
-    <bean id = "userService" class = "com.example.ioc.UserService">
+    <bean id = "userDAO" class = "com.ch01.ioc.UserDAO"> </bean>
+    <bean id = "userService" class = "com.ch01.ioc.UserService">
         <!--2.Service里面注入DAO对象
               这不是String，是对象 不能用value，用ref
               ref的值为DAO对象的id： userDAO-->
