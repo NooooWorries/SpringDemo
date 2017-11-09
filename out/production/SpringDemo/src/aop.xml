@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 对象配置 -->
+    <bean id = "aopBook" class="com.ch02.aop.Book"></bean>
+    <bean id = "aopPurchaseBook" class="com.ch02.aop.PurchaseBook"></bean>
+
+    <!-- aop配置 -->
+    <aop:config>
+        <!-- 首先配置切入点，就是需要被增强的方法 -->
+        <!-- expression: 表达式，就是我们上一节描述过的-->
+        <aop:pointcut id="pointBook" expression="execution(* com.ch02.aop.Book.*(..))"></aop:pointcut>
+
+        <!-- 然后配置切面，就是把增强用在具体方法的过程
+             我们的增强是PurchaseBook
+             ref就是我们配置好的对象的Id
+             这里的对象是增强的方法，而不是被增强的方法-->
+        <aop:aspect ref="aopPurchaseBook">
+            <!-- 这里我们用前置增强
+            method: 哪个方法是增强的方法？
+            pointcut-ref:被增强的方法，切入点的Id-->
+            <aop:before method="before" pointcut-ref="pointBook" />
+
+            <aop:around method="around" pointcut-ref="pointBook" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>
